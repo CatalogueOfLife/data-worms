@@ -1,4 +1,4 @@
-name: Validate & Publish Metadata
+name: Verify WoRMs checklists synced
 
 on:
   schedule:

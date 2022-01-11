@@ -1,4 +1,4 @@
-name: Validate & Publish Metadata
+name: Import WoRMS checklists
 
 on:
   schedule:
