@@ -4,7 +4,7 @@ on:
   schedule:
     - cron: "0 0 4 * *"
   workflow_dispatch:
-    - name: import-checklists
+    - name: import
 
 jobs:
   build:
@@ -34,12 +34,3 @@ jobs:
         COL_HOST: ${{ secrets.COL_HOST }}
       run: |
         pytest ./scripts/import.py
-    - name: Sync WoRMs Checklists
-      id: publish
-      env:
-        COL_USER: ${{ secrets.COL_USER }}
-        COL_PASS: ${{ secrets.COL_PASS }}
-        COL_HOST: ${{ secrets.COL_HOST }}
-      if: ${{ steps.validate.outcome == 'success' }}
-      run: |
-        pytest ./scripts/sync.py
