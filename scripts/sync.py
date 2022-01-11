@@ -37,7 +37,7 @@ def test_imported():
             errors.append({"id": dataset['id'], "alias": dataset['alias'], "code": resp.status_code, "body": resp.text,
                            "msg": "Importer state was not 'finished'"})
         try:
-            finished_importing_datetime = datetime.strptime(dataset['finished'], "%Y-%m-%dT%H:%M:%S.%f").replace(tzinfo=timezone.utc)
+            finished_importing_datetime = datetime.strptime(import_status['finished'], "%Y-%m-%dT%H:%M:%S.%f").replace(tzinfo=timezone.utc)
             current_datetime = datetime.now(timezone.utc)
             assert current_datetime - timedelta(hours=24) <= finished_importing_datetime <= current_datetime
         except AssertionError:
