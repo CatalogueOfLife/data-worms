@@ -1,8 +1,8 @@
 import os
 
-API_URL = os.getenv('API_URL')
-API_USER = os.getenv('API_USER')
-API_PASS = os.getenv('API_PASS')
+API_URL = os.environ.get('API_URL')
+API_USER = os.environ.get('API_USER')
+API_PASS = os.environ.get('API_PASS')
 
 #
 # DATASETS = [{'id': '1044', 'alias': 'WoRMS Porifera', 'title': 'World Porifera Database'},

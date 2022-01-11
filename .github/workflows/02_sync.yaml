@@ -2,9 +2,8 @@ name: Verify WoRMs checklists imported and sync
 
 on:
   schedule:
-    - cron: "0 0 5 * *"
+    - cron: "0 0 4 * *"
   workflow_dispatch:
-    - name: sync
 
 jobs:
   build:
@@ -31,7 +30,7 @@ jobs:
     - name: Sync WoRMs Checklists
       id: sync
       env:
-        API_URL: ${{ secrets.COL_URL }}
+        API_URL: ${{ secrets.API_URL }}
         API_USER: ${{ secrets.API_USER }}
         API_PASS: ${{ secrets.API_PASS }}
       run: |

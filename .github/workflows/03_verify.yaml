@@ -2,9 +2,8 @@ name: Verify WoRMs checklists synced
 
 on:
   schedule:
-    - cron: "0 0 6 * *"
+    - cron: "0 0 4 * *"
   workflow_dispatch:
-    - name: verify
 
 jobs:
   build:
@@ -31,7 +30,7 @@ jobs:
     - name: Verify WoRMs Checklists synced into CoL
       id: verify
       env:
-        API_URL: ${{ secrets.COL_URL }}
+        API_URL: ${{ secrets.API_URL }}
         API_USER: ${{ secrets.API_USER }}
         API_PASS: ${{ secrets.API_PASS }}
       run: |
