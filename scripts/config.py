@@ -75,4 +75,5 @@ API_PASS = os.environ.get('API_PASS')
 DATASETS = [{'id': '1105', 'alias': 'WoRMS Leptostraca', 'title': 'World List of Leptostraca'},
             {'id': '1123', 'alias': 'WoRMS Placozoa', 'title': 'World Placozoa Database'},
             {'id': '1152', 'alias': 'WoRMS Merostomata', 'title': 'World List of Merostomata'},
+            {'id': '1185', 'alias': 'WoRMS Thaliacea', 'title': 'World list of Thaliacea'},
 ]
