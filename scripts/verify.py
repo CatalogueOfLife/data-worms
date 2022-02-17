@@ -52,10 +52,10 @@ def test_sector_syncs_completed():
             try:
                 finished_sync_datetime = datetime.strptime(resp.json()['result'][0]['finished'], "%Y-%m-%dT%H:%M:%S.%f").replace(tzinfo=timezone.utc)
                 current_datetime = datetime.now(timezone.utc)
-                assert current_datetime - timedelta(hours=24) <= finished_sync_datetime <= current_datetime
+                assert current_datetime - timedelta(hours=48) <= finished_sync_datetime <= current_datetime
             except AssertionError:
                 errors.append(
                     {"id": dataset['id'], "alias": dataset['alias'], "code": resp.status_code, "body": resp.text,
-                     "msg": "Sync finished time was not within the last 24 hours"})
+                     "msg": "Sync finished time was not within the last 48 hours"})
 
     assert errors == []
