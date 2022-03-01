@@ -3,7 +3,7 @@ name: Verify WoRMs checklists synced
 on: 
   workflow_dispatch:
   schedule:
-    - cron: "0 0 14 * *"
+    - cron: "0 0 4 * *"
 
 jobs:
   build:
