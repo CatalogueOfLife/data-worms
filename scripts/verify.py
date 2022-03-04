@@ -22,6 +22,20 @@ def get_sector_sync_status(sector_id):
     return resp
 
 
+# the backend bug in which canceled sync jobs are always at the top breaks sync verification, so we need to skip them
+#  https://github.com/CatalogueOfLife/backend/issues/1108
+# if the job actually was canceled then it should still fail because the last successful sync will likely be too old
+def skip_canceled(json):
+    index = 0
+    for j in json['result']:
+        if j['state'] == 'canceled':
+            index = index + 1
+            continue
+        else:
+            break
+    return index
+
+
 def test_sector_syncs_completed():
     errors = []
 
@@ -30,6 +44,8 @@ def test_sector_syncs_completed():
 
         for sector_id in sector_ids:
             resp = get_sector_sync_status(sector_id)
+            index = skip_canceled(resp.json())
+            print('INDEX', index)
 
             try:
                 assert resp.status_code == 200
@@ -41,7 +57,7 @@ def test_sector_syncs_completed():
                                "body": resp.text,
                                "msg": "Failed to get importer status"})
             try:
-                assert resp.json()['result'][0]['state'] == 'finished'
+                assert resp.json()['result'][index]['state'] == 'finished'
             except AssertionError:
                 errors.append({"id": dataset['id'],
                                "alias": dataset['alias'],
@@ -50,8 +66,11 @@ def test_sector_syncs_completed():
                                "body": resp.text,
                                "msg": "Sector sync not finished"})
             try:
-                finished_sync_datetime = datetime.strptime(resp.json()['result'][0]['finished'], "%Y-%m-%dT%H:%M:%S.%f").replace(tzinfo=timezone.utc)
+                finished_sync_datetime = datetime.strptime(resp.json()['result'][index]['finished'], "%Y-%m-%dT%H:%M:%S.%f").replace(tzinfo=timezone.utc)
                 current_datetime = datetime.now(timezone.utc)
+                print(current_datetime - timedelta(hours=48))
+                print(finished_sync_datetime)
+                print(current_datetime)
                 assert current_datetime - timedelta(hours=48) <= finished_sync_datetime <= current_datetime
             except AssertionError:
                 errors.append(
