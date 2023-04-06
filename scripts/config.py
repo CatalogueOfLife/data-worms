@@ -25,7 +25,6 @@ DATASETS = [{'id': '1044', 'alias': 'WoRMS Porifera', 'title': 'World Porifera D
             {'id': '1105', 'alias': 'WoRMS Leptostraca', 'title': 'World List of Leptostraca'},
             {'id': '1106', 'alias': 'WoRMS Echinoidea', 'title': 'World Echinoidea Database'},
             {'id': '1107', 'alias': 'WoRMS Holothuroidea', 'title': 'World List of Holothuroidea'},
-            {'id': '1108', 'alias': 'WoRMS Brachyura', 'title': 'World List of marine Brachyura'},
             {'id': '1109', 'alias': 'WoRMS Polycystina', 'title': 'World List of Polycystina (Radiolaria)'},
             {'id': '1110', 'alias': 'WoRMS Tanaidacea', 'title': 'World List of Tanaidacea'},
             {'id': '1112', 'alias': 'WoRMS Hydrozoa', 'title': 'World Hydrozoa Database'},
