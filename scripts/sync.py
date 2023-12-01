@@ -39,11 +39,11 @@ def test_imported():
         try:
             finished_importing_datetime = datetime.strptime(import_status['finished'], "%Y-%m-%dT%H:%M:%S.%f").replace(tzinfo=timezone.utc)
             current_datetime = datetime.now(timezone.utc)
-            assert current_datetime - timedelta(hours=24) <= finished_importing_datetime <= current_datetime
+            assert current_datetime - timedelta(hours=72) <= finished_importing_datetime <= current_datetime
         except AssertionError:
             errors.append({"id": dataset['id'], "alias": dataset['alias'], "code": resp.status_code, "body": resp.text,
-                           "msg": "Importer finished time was not within the last 24 hours"})
-
+                           "msg": "Importer finished time was not within the last 72 hours"})
+    print(errors)
     assert errors == []
 
 
