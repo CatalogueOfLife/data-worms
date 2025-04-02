@@ -70,4 +70,5 @@ DATASETS = [{'id': '1044', 'alias': 'WoRMS Porifera', 'title': 'World Porifera D
             {'id': '2300', 'alias': 'WoRMS Crinoidea', 'title': 'Crinoidea'},
             {'id': '2301', 'alias': 'WoRMS Euphausiacea', 'title': 'Euphausiacea'},
             {'id': '2302', 'alias': 'WoRMS Nemys', 'title': 'Nemys'},
+            {'id': '308389', 'alias': 'WoRMS Mysidacea', 'title': 'Mysidacea'}
 ]
