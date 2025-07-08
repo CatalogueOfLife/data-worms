@@ -5,7 +5,8 @@ API_USER = os.environ.get('API_USER')
 API_PASS = os.environ.get('API_PASS')
 
 
-DATASETS = [{'id': '1044', 'alias': 'WoRMS Porifera', 'title': 'World Porifera Database'},
+DATASETS = [{'id': '1010', 'alias': 'WoRMS FishBase', 'title': 'FishBase'},
+            {'id': '1044', 'alias': 'WoRMS Porifera', 'title': 'World Porifera Database'},
             {'id': '1058', 'alias': 'WoRMS Cumacea', 'title': 'World Cumacea Database'},
             {'id': '1059', 'alias': 'WoRMS Ophiuroidea', 'title': 'World Ophiuroidea database'},
             {'id': '1081', 'alias': 'WoRMS Bryozoa', 'title': 'World List of Bryozoa'},
