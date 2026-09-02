@@ -34,4 +34,4 @@ jobs:
         API_USER: ${{ secrets.API_USER }}
         API_PASS: ${{ secrets.API_PASS }}
       run: |
-        pytest ./scripts/verify.py
+        pytest ./scripts/verify.py --tb=short -rN

@@ -34,4 +34,4 @@ jobs:
         API_USER: ${{ secrets.API_USER }}
         API_PASS: ${{ secrets.API_PASS }}
       run: |
-        pytest ./scripts/import.py
+        pytest ./scripts/import.py --tb=short -rN
