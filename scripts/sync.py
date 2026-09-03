@@ -59,7 +59,8 @@ def test_imported():
 
         job = results[0]
 
-        if job.get('status') != 'FINISHED':
+        status = (job.get('status') or '').upper()
+        if status != 'FINISHED':
             errors.append({"id": dataset['id'], "alias": dataset['alias'],
                            "code": resp.status_code,
                            "msg": f"Import status was {job.get('status')!r}, not 'FINISHED'"})

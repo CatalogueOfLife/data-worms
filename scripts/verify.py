@@ -42,7 +42,7 @@ def _parse_dt(s):
 def skip_canceled(results):
     index = 0
     for j in results:
-        if j['status'] == 'CANCELED':
+        if (j.get('status') or '').upper() == 'CANCELED':
             index += 1
             continue
         break
@@ -80,7 +80,8 @@ def test_sector_syncs_completed():
 
             latest = results[index]
 
-            if latest.get('status') != 'FINISHED':
+            status = (latest.get('status') or '').upper()
+            if status != 'FINISHED':
                 errors.append(_err(dataset, sector_id, resp.status_code,
                                    f"Sector sync status was {latest.get('status')!r}, not 'FINISHED'"))
                 continue
